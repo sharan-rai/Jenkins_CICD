@@ -57,6 +57,7 @@ pipeline {
                 script{
                     withDockerRegistry(credentialsId: 'docker') {
                         sh '''
+                        docker rm -f jenkins_cicd
                         docker build -t jenkins_cicd .
                         docker tag jenkins_cicd sharanrai1997/jenkins_cicd:latest
                         docker push sharanrai1997/jenkins_cicd:latest
